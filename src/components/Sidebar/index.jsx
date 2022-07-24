@@ -9,6 +9,7 @@ export default function Sidebar() {
       <img
         className={styles.cover}
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKPs0ERcJncNggAeoArZs-gkUMvmBCdG6VmA&usqp=CAU"
+        alt="banner do sidebar"
       />
 
       <div className={styles.profile}>

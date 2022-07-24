@@ -9,3 +9,4 @@ export default function Avatar({hasBorder = true, src}) {
     />
   )
 }
+
