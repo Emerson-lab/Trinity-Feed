@@ -1,26 +1,51 @@
+import { format, formatDistanceToNow } from 'date-fns';
+import ptBR from "date-fns/locale/pt-BR";
 import Avatar from "../Avatar";
 import Comment from "../Comment";
 import styles from "./Post.module.css";
 
-export default function Post() {
+export default function Post(props) {
+
+  //formatar data com a lib date-fns
+  const publishedDateFormatted =
+    format(props.publishedAt,
+      "d de LLLL 'às' HH:mm'h'",
+      {
+        locale: ptBR
+      }
+    )
+  //tempo decorrido apos à data publicada do post
+  const publishedDateRelativeToNow = formatDistanceToNow(props.publishedAt, {
+    locale: ptBR,
+    addSuffix: true
+  })
+
+  //formatar data com javascript
+  // const publishedDateFormatted = new Intl.DateTimeFormat('pt-BR', {
+  //   day: '2-digit',
+  //   month: 'long',
+  //   hour:'2-digit',
+  //   minute: '2-digit'
+  // }).format(props.publishedAt);
+
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
           <Avatar
-            src="https://avatars.githubusercontent.com/u/79539678?v=4"
+            src={props.author.avatarUrl}
           />
           <div className={styles.authorInfo}>
-            <strong>Emerson Trindade</strong>
-            <span>Web Developer</span>
+            <strong>{props.author.name}</strong>
+            <span>{props.author.role}</span>
           </div>
         </div>
 
         <time
-          title="11 de maio às 08:13"
-          dateTime="2022-05-11 08:13:30"
+          title={publishedDateFormatted}
+          dateTime={publishedDateFormatted}
         >
-          publicado há 1h
+          {publishedDateRelativeToNow}
         </time>
       </header>
 

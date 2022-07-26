@@ -9,6 +9,12 @@
   align-items: flex-start;
 }
 
+@media (max-width: 768px) {
+  html{
+    font-size: 87.5%;
+  }
+}
+
 @media(max-width: 768px) {
   .warapper {
     grid-template-columns: 1fr;
