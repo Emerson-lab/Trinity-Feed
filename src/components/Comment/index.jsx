@@ -1,8 +1,15 @@
 import { ThumbsUp, Trash } from 'phosphor-react';
+import { useState } from 'react';
 import Avatar from '../Avatar';
 import styles from './Comment.module.css';
 
-export default function Comment() {
+export default function Comment(props) {
+  const [clap, setClap] = useState(0);
+
+  const handleDeleteComment = () => {
+    props.onDeletComment(props.content)
+  }
+
   return (
     <div className={styles.comment}>
       <Avatar
@@ -23,6 +30,7 @@ export default function Comment() {
               </time>
             </div>
             <button
+              onClick={handleDeleteComment}
               aria-label="Deletar comentário"
               title="Deletar comentário"
             >
@@ -30,13 +38,13 @@ export default function Comment() {
             </button>
           </header>
 
-          <p>Muito bom Devon, parabéns!! 👏👏 </p>
+          <p>{props.content}</p>
         </div>
 
         <footer>
-          <button>
+          <button onClick={() => setClap(clap + 1)}>
             <ThumbsUp />
-            Aplaudir <span>20</span>
+            Aplaudir <span>{clap}</span>
           </button>
         </footer>
       </div>
