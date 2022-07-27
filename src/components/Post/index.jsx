@@ -60,11 +60,11 @@ export default function Post(props) {
       <header>
         <div className={styles.author}>
           <Avatar
-            src={props.author.avatarUrl}
+            src="https://avatars.githubusercontent.com/u/79539678?v=4"
           />
           <div className={styles.authorInfo}>
-            <strong>{props.author.name}</strong>
-            <span>{props.author.role}</span>
+            <strong>Emerson Trindade</strong>
+            <span>Web Developer</span>
           </div>
         </div>
 
@@ -72,7 +72,7 @@ export default function Post(props) {
           title={publishedDateFormatted}
           dateTime={props.publishedAt.toISOString()}
         >
-          {publishedDateRelativeToNow}
+          publicado há 1h
         </time>
       </header>
 
